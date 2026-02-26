@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Element HR</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background-color: #F4F5F0;
+      color: black;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .brutal-card {
+      background: white;
+      border: 3px solid black;
+      box-shadow: 6px 6px 0px black;
+      padding: 20px;
+      position: relative;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .brutal-card:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 4px 4px 0px black;
+    }
+
+    .stage-container {
+      border: 2px dashed #999;
+      padding: 16px;
+      min-height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fafafa;
+      position: relative;
+      margin-top: 16px;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      width: 100%;
+      background: black;
+      margin: 0;
+    }
+
+    .hr-quiet {
+      height: 2px;
+      background: black;
+      width: 88%;
+    }
+
+    .hr-section {
+      height: 8px;
+      border-top: 3px solid black;
+      border-bottom: 3px solid black;
+      background: transparent;
+      width: 70%;
+    }
+
+    .hr-tear {
+      height: 0;
+      background: transparent;
+      border-top: 3px dashed black;
+      width: 92%;
+    }
+
+    .hr-vertical {
+      width: 3px;
+      height: 70px;
+      background: black;
+    }
+
+    .hr-wiggle {
+      height: 12px;
+      width: 92%;
+      background: repeating-linear-gradient(
+        45deg,
+        black,
+        black 10px,
+        #FF3366 10px,
+        #FF3366 20px
+      );
+      animation: moveStripes 1s linear infinite;
+      border: 2px solid black;
+    }
+    @keyframes moveStripes {
+      0% { background-position: 0 0; }
+      100% { background-position: 28px 0; }
+    }
+
+    .hr-fog {
+      height: 32px;
+      width: 92%;
+      background: #00E5FF;
+      border: 3px solid black;
+    }
+
+    .progressTrack {
+      width: 92%;
+      height: 20px;
+      background: white;
+      border: 3px solid black;
+      box-shadow: 3px 3px 0px black;
+      position: relative;
+    }
+    .progressTrack hr {
+      height: 100%;
+      background: #FFDE00;
+      border-right: 3px solid black;
+      margin: 0;
+      transition: width 0.1s linear;
+    }
+
+    .hr-button {
+      height: 10px;
+      width: 40%;
+      background: black;
+      transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .hr-button:hover {
+      width: 92%;
+      height: 32px;
+      background: #B388FF;
+      border: 3px solid black;
+      box-shadow: 4px 4px 0px black;
+    }
+    .pulse-anim {
+      animation: brutalPulse 0.3s ease;
+    }
+    @keyframes brutalPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .loaderWrap {
+      width: 92%;
+      height: 20px;
+      background: white;
+      border: 3px solid black;
+      position: relative;
+      overflow: hidden;
+    }
+    .loaderWrap hr {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 30%;
+      background: black;
+      animation: brutalLoad 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes brutalLoad {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(233%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen w-full flex items-center justify-center p-6 md:p-12 relative overflow-hidden">
+    <div class="absolute top-10 left-10 w-32 h-32 bg-[#FFDE00] border-4 border-black rounded-full mix-blend-multiply opacity-50 blur-xl"></div>
+    <div class="absolute bottom-20 right-20 w-48 h-48 bg-[#FF3366] border-4 border-black mix-blend-multiply opacity-50 blur-xl"></div>
+    
+    <div class="w-full max-w-[1100px] relative z-10">
+      <header class="mb-8 border-b-4 border-black pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h1 class="m-0 text-4xl md:text-5xl font-black uppercase tracking-tight">
+            Element <span class="lowercase">&lt;hr&gt;</span>
+          </h1>
+        </div>
+      </header>
+
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="brutal-card">
+          <div class="stage-container">
+            <p class="absolute left-3 top-3 m-0 text-xs font-bold text-gray-500 uppercase">Section A</p>
+            <hr class="hr-quiet" aria-label="quiet divider" />
+          </div>
+        </article>
+
+        <article class="brutal-card">
+          <div class="stage-container">
+            <p class="absolute left-3 top-3 m-0 text-xs font-bold text-gray-500 uppercase">Chapter Ends</p>
+            <hr class="hr-section" aria-label="chapter break" />
+          </div>
+        </article>
+
+        <article class="brutal-card">
+          <div class="stage-container">
+            <p class="absolute left-3 top-3 m-0 text-xs font-bold text-gray-500 uppercase">Tear Here</p>
+            <hr class="hr-tear" aria-label="tear line" />
+          </div>
+        </article>
+
+        <article class="brutal-card">
+          <div class="stage-container bg-[#FFFDF8]">
+            <p class="absolute left-3 top-3 m-0 text-xs font-bold text-gray-500 uppercase">Blocked Path</p>
+            <div class="h-[70px] w-full flex items-center justify-center">
+              <hr class="hr-vertical" aria-label="vertical divider" />
+            </div>
+          </div>
+        </article>
+
+        <article class="brutal-card">
+          <div class="stage-container bg-[#FFFDF8]">
+            <p class="absolute left-3 top-3 m-0 text-xs font-bold text-gray-500 uppercase">Signal</p>
+            <hr class="hr-wiggle" aria-label="animated signal line" />
+          </div>
+        </article>
+
+        <article class="brutal-card">
+          <div class="stage-container bg-[#FFFDF8]">
+            <p class="absolute left-3 top-3 m-0 text-xs font-bold text-gray-500 uppercase">Volume</p>
+            <hr class="hr-fog" aria-label="fog band divider" />
+          </div>
+        </article>
+
+        <article class="brutal-card">
+          <div class="stage-container">
+            <p class="absolute left-3 top-3 m-0 text-xs font-bold text-gray-500 uppercase" id="progressLabel">Loading 45%</p>
+            <div class="progressTrack" aria-label="progress track">
+              <hr id="prog" aria-label="progress fill" style="width: 45%;" />
+            </div>
+          </div>
+        </article>
+
+        <article class="brutal-card">
+          <div class="stage-container">
+            <p class="absolute left-3 top-3 m-0 text-xs font-bold text-[#FF3366] uppercase">Hover + Click</p>
+            <div class="w-[92%] flex flex-col gap-3 items-center justify-center">
+              <hr 
+                id="hrBtn"
+                class="hr-button" 
+                role="button" 
+                tabindex="0" 
+                aria-label="interactive line button"
+              />
+              <p id="btnLabel" class="m-0 text-xs font-black bg-black text-white px-2 py-1">NEUTRAL</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="brutal-card">
+          <div class="stage-container">
+            <p class="absolute left-3 top-3 m-0 text-xs font-bold text-gray-500 uppercase">Fetching</p>
+            <div class="loaderWrap" aria-label="loader track">
+              <hr aria-label="loader shimmer" />
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const prog = document.getElementById('prog');
+    const progLabel = document.getElementById('progressLabel');
+    let p = 45;
+    let dir = 1;
+
+    setInterval(() => {
+      p += dir * 1.5;
+      if (p >= 90) dir = -1;
+      if (p <= 10) dir = 1;
+      prog.style.width = p.toFixed(0) + '%';
+      progLabel.textContent = `LOADING ${p.toFixed(0)}%`;
+    }, 50);
+
+    const hrBtn = document.getElementById('hrBtn');
+    const btnLabel = document.getElementById('btnLabel');
+    const states = ["NEUTRAL", "ARMED", "CLICKED", "RELEASED"];
+    let btnState = 0;
+
+    function advanceBtn() {
+      btnState = (btnState + 1) % states.length;
+      btnLabel.textContent = states[btnState];
+      
+      hrBtn.classList.remove('pulse-anim');
+      void hrBtn.offsetWidth; 
+      hrBtn.classList.add('pulse-anim');
+    }
+
+    hrBtn.addEventListener('click', advanceBtn);
+    hrBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        advanceBtn();
+      }
+    });
+  </script>
+</body>
+</html>
